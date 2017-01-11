@@ -1,0 +1,270 @@
+$center-content-width: 300px
+$center-content-height: 350px
+
+$matte-black: #2f2f2f
+
+
+.main-page-wrap
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  margin: 0 auto
+  text-align: center
+  height: 100%
+
+  .welcome-text
+    h3
+      @include responsive-font(2em, 12px)
+
+  .center-content
+    width: $center-content-width
+    height: $center-content-height
+    max-width: $center-content-width
+    max-height: $center-content-height
+    background: transparentize($white, .6)
+    margin: 10px auto
+    border-radius: 2px
+    overflow: auto
+    position: relative
+
+    h3
+      padding-top: 20px
+
+  .left-col, .right-col
+    position: relative
+    width: 10%
+    display: inline-block
+    i
+      @include responsive-font(6em, 14px, 6em, 14px)
+
+  .left-col
+    order: 1
+  .center-col
+    order: 2
+    flex-grow: 1
+  .right-col
+    order: 3
+  .progress-bar
+    position: fixed
+    bottom: 30px
+    width: 100vw
+    height: 10px
+    background: transparentize($matte-black, .6)
+
+  .square
+    position: relative
+    width: 75%
+    overflow: hidden
+    margin: 20px auto
+    background-color: pink
+    &:before
+      content: ''
+      display: block
+      padding-top: 100%
+
+    .motw
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+      text-align: center
+      background: $yellow-light
+      i
+        font-size: 16em
+      &:before
+        width: 100%
+        height: 100%
+        content: ''
+        position: absolute
+        transition: 300ms
+        opacity: 0
+        background-color: $black
+
+      &:hover:before
+        opacity: .5
+
+@media screen and (min-width: 501px)
+  .main-page-wrap
+    .left-col, .right-col
+      &:hover
+        color: transparentize($white, .5)
+        cursor: pointer
+
+@media screen and (max-width: 500px)
+  .main-page-wrap
+    justify-content: center
+    flex-flow: row wrap
+
+    .center-col
+      width: 100vw
+      height: 70vh
+      order: 1
+
+    .left-col, .right-col
+      flex-grow: 1
+      height: 30vh
+      line-height: 30%
+      &:active
+        color: transparentize($white, .5)
+    .left-col
+      order: 2
+    .right-col
+      order: 3
+
+    .left-arrow, .right-arrow
+      position: absolute
+      top: 10px
+
+    .left-arrow
+      right: 0px
+
+    .right-arrow
+      left: 0px
+      
+
+// .main-page-wrap
+//   position: relative
+//   width: 100vw
+//   height: 100vh
+//
+//   .welcome-text
+//     text-align: center
+//     padding-top: 30px
+//     letter-spacing: 2px
+//   h3 
+//     color: #2f2f2f
+//
+//   .center-content-wrap
+//     position: absolute
+//     width: 300px
+//     height: 350px
+//     text-align: center
+//     top: 50%
+//     left: 50%
+//     background: rgba(255, 255, 255, .4)
+//     transform: translate(-50%, -50%)
+//     transition: 400ms
+//     // &:hover
+//       // width: 80vw
+//       // height: 75vh
+//       // transition-delay: 500ms
+//       // .flipper .motw::before
+//       //   opacity: 1
+//       // .center-unit
+//       //   opacity: 0
+//
+//     .center-unit
+//       transition: 400ms
+//       &:hover
+//         .flipper .motw::before, .flipper .motw::after
+//           opacity: 1
+//       .flipper
+//         .motw:hover:after
+//           background: pink
+//
+//     .flipper
+//       width: 250px
+//       height: 250px
+//       position: relative
+//       margin: 20px auto
+//       transition: all 400ms ease-in-out
+//       transform-style: preserve-3d
+//       box-shadow: 0px 0px 2px 2px transparentize(#2f2f2f, .8)
+//
+//     .motw, .learn-more
+//       position: absolute
+//       width: 100%
+//       height: 100%
+//       top: 0
+//       left: 0
+//
+//     .motw 
+//       background: $yellow-light
+//       line-height: 250px
+//       z-index: -1
+//       .note
+//         font-size: 250px
+//
+//       &:before
+//         content: ''
+//         position: absolute
+//         width: 100%
+//         height: 100%
+//         background: transparentize(#2f2f2f, .7)
+//         transition: 400ms
+//         opacity: 0
+//       &:after
+//         content: 'Learn More'
+//         position: absolute
+//         background: #2f2f2f
+//         border-radius: 3px
+//         line-height: 1em
+//         top: 50%
+//         left: 50%
+//         transform: translate(-50%, -50%)
+//         color: #eee
+//         padding: 1em 3em
+//         z-index: 3
+//         white-space: nowrap
+//         transition: 300ms
+//         opacity: 0
+//         &:hover
+//           cursor: pointer
+//           box-shadow: 0 0 0 2px #2f2f2f, 0 0 0 4px $yellow-light
+//         
+//
+//
+//     .learn-more
+//       a
+//         transition: 300ms
+//         line-height: 250px
+//         padding: 1em 3em
+//         border: $yellow
+//         border-radius: 3px
+//         background: $yellow-light
+//         color: #2f2f2f
+//         &:hover
+//           cursor: pointer
+//           box-shadow: 0 0 0 2px #2f2f2f, 0 0 0 4px $yellow-light
+//
+//
+//   .left-arrow, .right-arrow
+//     position: absolute
+//     font-size: 8em
+//     transition: 400ms
+//     &:hover
+//       color: rgba(255, 255, 255, .3)
+//       cursor: pointer
+//
+//   .left-arrow
+//     top: 50%
+//     margin-left: 25px
+//     transform: translate(0, -50%)
+//
+//   .right-arrow
+//     top: 50%
+//     right: 25px
+//     margin-left: 25px
+//     transform: translate(0, -50%)
+//
+//
+//   .progress-bar
+//     width: 100%
+//     height: 10px
+//     // background: linear-gradient(90deg, $navy, $salmon)
+//     background: transparentize(#2f2f2f, .6)
+//     position: absolute
+//     bottom: 0px
+//     margin-bottom: 30px
+//
+// @media screen and (max-width: 500px)
+//   .main-page-wrap
+//     // display: flex
+//       // +clearfix
+//       float: left
+//     .left-arrow, .right-arrow
+//       background: pink
+//       
+//   
